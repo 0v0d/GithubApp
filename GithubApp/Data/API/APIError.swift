@@ -15,7 +15,6 @@ enum APIError: LocalizedError {
     case serverError(statusCode: Int)
     case rateLimitExceeded
     
-
     var errorDescription: String? {
         switch self {
         case .invalidURL:

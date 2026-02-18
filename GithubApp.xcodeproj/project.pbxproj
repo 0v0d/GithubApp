@@ -12,7 +12,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D06EC8672F43496F00D53A50 /* GithubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GithubApp.app; path = "/Users/0v0/apps/GithubApp/build/Debug-iphoneos/GithubApp.app"; sourceTree = "<absolute>"; };
+		D0A370AF2F45DA21004125F8 /* GithubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GithubApp.app; path = "/Users/0v0/apps/GithubApp/build/Debug-iphoneos/GithubApp.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -67,7 +67,7 @@
 				D028B7622F41FF0300C8AEE6 /* Dependencies */,
 			);
 			productName = GithubApp;
-			productReference = D06EC8672F43496F00D53A50 /* GithubApp.app */;
+			productReference = D0A370AF2F45DA21004125F8 /* GithubApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

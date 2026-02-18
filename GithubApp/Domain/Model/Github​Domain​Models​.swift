@@ -16,7 +16,7 @@ struct GithubItem : Identifiable,Sendable {
     let language: String?
     let htmlURL: String
     let owner: GithubOwner
-
+    
     nonisolated init(
         id: UUID = UUID(),
         name: String,
@@ -36,18 +36,18 @@ struct GithubItem : Identifiable,Sendable {
         self.htmlURL = htmlURL
         self.owner = owner
     }
-
+    
 }
 
 struct GithubOwner : Sendable {
     let login: String
-    let avatarURL: String
-    let htmlURL: String
-
+    let avatarURL: URL?
+    let htmlURL: URL?
+    
     nonisolated init(
         login: String,
-        avatarURL: String,
-        htmlURL: String
+        avatarURL: URL?,
+        htmlURL: URL?
     ) {
         self.login = login
         self.avatarURL = avatarURL

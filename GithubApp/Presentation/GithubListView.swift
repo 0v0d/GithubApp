@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GithubListView: View {
     @State private var viewModel = GithubListViewModel()
-
+    
     var body: some View {
         VStack{
             if viewModel.isLoading {
@@ -23,7 +23,8 @@ struct GithubListView: View {
             } else {
                 EmptyView()
             }
-        }.task {
+        }
+        .task {
             if viewModel.githubList == nil {
                 await viewModel.fetchGithubList(for: "kotlin")
             }
@@ -34,10 +35,35 @@ struct GithubListView: View {
 
 struct GithubItemListView:View {
     let list:[GithubItem]
-
+    
     var body: some View {
-        List (list){ item in
-            Text(item.name)
+        NavigationStack {
+            List(list) { item in
+                RepositoryItemView(item: item)
+            }
+            .listStyle(.insetGrouped)
+            .navigationTitle("Repositories")
+        }
+    }
+}
+
+
+struct RepositoryItemView: View {
+    let item:GithubItem
+    
+    var body: some View{
+        HStack{
+            AsyncImage(
+                url: item.owner.avatarURL
+            ) { image in
+                image
+                    .resizable()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 50, height: 50)
+            
+            Text(item.fullName)
         }
     }
 }
@@ -50,7 +76,7 @@ struct LoadingView: View {
                 .progressViewStyle(.circular)
                 .scaleEffect(1.5)
                 .tint(.white)
-
+            
             Text("Loading...")
                 .font(.subheadline)
                 .foregroundStyle(.white)
@@ -63,21 +89,21 @@ struct LoadingView: View {
 struct ErrorView: View {
     let message: String
     let onDismiss: () -> Void
-
+    
     var body: some View {
         VStack(spacing: 16) {
             Image(systemName: "exclamationmark.triangle.fill")
                 .font(.system(size: 40))
                 .foregroundStyle(.orange)
-
+            
             Text("Error")
                 .font(.headline)
-
+            
             Text(message)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
-
+            
             Button("Dismiss") {
                 onDismiss()
             }

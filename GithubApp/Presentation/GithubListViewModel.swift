@@ -14,22 +14,22 @@ final class GithubListViewModel{
     private(set) var githubList: [GithubItem]?
     private(set) var isLoading = false
     private(set) var errorMessage: String?
-
+    
     @ObservationIgnored
     private let githubRepository: GithubRepositoryClient
-
+    
     init(githubRepository: GithubRepositoryClient = .live) {
         self.githubRepository = githubRepository
     }
-
+    
     func fetchGithubList(for keyword:String) async {
         guard !keyword.isEmpty else {
             return
         }
-
+        
         isLoading = true
         errorMessage = nil
-
+        
         defer { isLoading = false }
         
         do {
@@ -38,7 +38,7 @@ final class GithubListViewModel{
             errorMessage = error.localizedDescription
         }
     }
-
+    
     func clearError() {
         errorMessage = nil
     }
