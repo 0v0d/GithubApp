@@ -10,10 +10,10 @@ import Dependencies
 
 struct GithubRepositoryClient: Sendable {
     var fetchRepositories: @Sendable (String) async throws ->[GithubItem]
-
+    
     static let live = GithubRepositoryClient(
         fetchRepositories: { keyword in
-            let repository = await GithubRepository(
+            let repository = GithubRepository(
                 githubAPIClient: GithubAPIClient()
             )
             let response = try await repository.fetchGitHubRepositories(for: keyword)

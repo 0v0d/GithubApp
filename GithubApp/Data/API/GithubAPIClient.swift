@@ -11,12 +11,13 @@ protocol GithubAPIClientProtocol: Sendable {
     func fetchGitHubRepositories(for keyword:String)async throws -> GithubResponse
 }
 
-final class GithubAPIClient : GithubAPIClientProtocol {
+final class GithubAPIClient: GithubAPIClientProtocol, Sendable {
     private let baseURL = "https://api.github.com"
 
     func fetchGitHubRepositories(for keyword: String) async throws -> GithubResponse {
-        guard let encoded = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: "\(baseURL)/search/repositories?q=\(encoded)") else {
+        var components = URLComponents(string: "\(baseURL)/search/repositories")
+        components?.queryItems = [URLQueryItem(name: "q", value: keyword)]
+        guard let url = components?.url else {
             throw APIError.invalidURL
         }
         return try await requestAPI(url: url)

@@ -7,14 +7,11 @@
 
 import Foundation
 
-
-
-
 final class GithubRepository:GithubRepositoryProtocol, Sendable {
 
     private let githubAPIClient:any GithubAPIClientProtocol
 
-    init(githubAPIClient: any GithubAPIClientProtocol) {
+    nonisolated init(githubAPIClient: any GithubAPIClientProtocol) {
         self.githubAPIClient = githubAPIClient
     }
 
