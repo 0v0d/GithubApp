@@ -6,13 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		D028B7602F41FD4700C8AEE6 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = D028B75F2F41FD4700C8AEE6 /* Dependencies */; };
-		D028B7632F41FF0300C8AEE6 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = D028B7622F41FF0300C8AEE6 /* Dependencies */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		D06EC8672F43496F00D53A50 /* GithubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GithubApp.app; path = "/Users/0v0/apps/GithubApp/build/Debug-iphoneos/GithubApp.app"; sourceTree = "<absolute>"; };
+		D0D89C8F2F4C15FC002FC788 /* GithubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -28,8 +23,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D028B7602F41FD4700C8AEE6 /* Dependencies in Frameworks */,
-				D028B7632F41FF0300C8AEE6 /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				D0E478AE2F40B32A005AD161 /* GithubApp */,
+				D0D89C8F2F4C15FC002FC788 /* GithubApp.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,11 +57,9 @@
 			);
 			name = GithubApp;
 			packageProductDependencies = (
-				D028B75F2F41FD4700C8AEE6 /* Dependencies */,
-				D028B7622F41FF0300C8AEE6 /* Dependencies */,
 			);
 			productName = GithubApp;
-			productReference = D06EC8672F43496F00D53A50 /* GithubApp.app */;
+			productReference = D0D89C8F2F4C15FC002FC788 /* GithubApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -95,7 +87,6 @@
 			mainGroup = D0E478A32F40B32A005AD161;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				D028B7612F41FF0300C8AEE6 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D0E478A32F40B32A005AD161;
@@ -333,29 +324,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D028B7612F41FF0300C8AEE6 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.11.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D028B75F2F41FD4700C8AEE6 /* Dependencies */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Dependencies;
-		};
-		D028B7622F41FF0300C8AEE6 /* Dependencies */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D028B7612F41FF0300C8AEE6 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
-			productName = Dependencies;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0E478A42F40B32A005AD161 /* Project object */;
 }

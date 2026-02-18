@@ -5,9 +5,11 @@
 //  Created by 0v0 on 2026/02/16.
 //
 
+import Foundation
+
 extension GithubResponseItem {
     nonisolated func toDomain() -> GithubItem {
-        return GithubItem(
+        GithubItem(
             name: name,
             fullName: fullName,
             description: description,
@@ -21,9 +23,10 @@ extension GithubResponseItem {
 
 extension GithubResponseOwner {
     nonisolated func toDomain() -> GithubOwner {
-        return GithubOwner(
+        GithubOwner(
             login: login,
-            avatarURL: avatarURL,
-            htmlURL: htmlURL)
+            avatarURL: URL(string: avatarURL),
+            htmlURL: URL(string: htmlURL)
+        )
     }
 }

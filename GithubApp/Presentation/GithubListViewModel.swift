@@ -1,5 +1,5 @@
 //
-//  GithubViewModel.swift
+//  GithubListViewModel.swift
 //  GithubApp
 //
 //  Created by 0v0 on 2026/02/14.
@@ -10,19 +10,19 @@ import Observation
 
 @MainActor
 @Observable
-final class GithubListViewModel{
+final class GithubListViewModel {
     private(set) var githubList: [GithubItem]?
     private(set) var isLoading = false
     private(set) var errorMessage: String?
 
     @ObservationIgnored
-    private let githubRepository: GithubRepositoryClient
+    private let githubRepository: GithubRepositoryProtocol
 
-    init(githubRepository: GithubRepositoryClient = .live) {
+    init(githubRepository: GithubRepositoryProtocol = GithubRepository()) {
         self.githubRepository = githubRepository
     }
 
-    func fetchGithubList(for keyword:String) async {
+    func fetchGithubList(for keyword: String) async {
         guard !keyword.isEmpty else {
             return
         }
@@ -31,9 +31,9 @@ final class GithubListViewModel{
         errorMessage = nil
 
         defer { isLoading = false }
-        
+
         do {
-            githubList = try await githubRepository.fetchRepositories(keyword)
+            githubList = try await githubRepository.fetchGitHubRepositories(for: keyword)
         } catch {
             errorMessage = error.localizedDescription
         }

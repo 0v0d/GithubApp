@@ -7,15 +7,11 @@
 
 import Foundation
 
-struct GithubResponse :  Decodable,Sendable {
-    let items:[GithubResponseItem]
-
-    nonisolated init(items: [GithubResponseItem]) {
-        self.items = items
-    }
+struct GithubResponse: Decodable, Sendable {
+    let items: [GithubResponseItem]
 }
 
-struct GithubResponseItem : Sendable,Decodable {
+struct GithubResponseItem: Sendable, Decodable {
     let name: String
     let fullName: String
     let description: String?
@@ -33,27 +29,9 @@ struct GithubResponseItem : Sendable,Decodable {
         case htmlURL = "html_url"
         case owner
     }
-
-    nonisolated init(
-        name: String,
-        fullName: String,
-        description: String?,
-        stargazersCount: Int,
-        language: String?,
-        htmlURL: String,
-        owner: GithubResponseOwner
-    ) {
-        self.name = name
-        self.fullName = fullName
-        self.description = description
-        self.stargazersCount = stargazersCount
-        self.language = language
-        self.htmlURL = htmlURL
-        self.owner = owner
-    }
 }
 
-struct GithubResponseOwner : Sendable,Decodable {
+struct GithubResponseOwner: Sendable, Decodable {
     let login: String
     let avatarURL: String
     let htmlURL: String
@@ -62,15 +40,5 @@ struct GithubResponseOwner : Sendable,Decodable {
         case login
         case avatarURL = "avatar_url"
         case htmlURL = "html_url"
-    }
-
-    nonisolated init(
-        login: String,
-        avatarURL: String,
-        htmlURL: String
-    ) {
-        self.login = login
-        self.avatarURL = avatarURL
-        self.htmlURL = htmlURL
     }
 }

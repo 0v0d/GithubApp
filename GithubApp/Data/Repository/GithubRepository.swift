@@ -7,19 +7,15 @@
 
 import Foundation
 
+final class GithubRepository: GithubRepositoryProtocol, Sendable {
+    private let githubAPIClient: any GithubAPIClientProtocol
 
-
-
-final class GithubRepository:GithubRepositoryProtocol, Sendable {
-
-    private let githubAPIClient:any GithubAPIClientProtocol
-
-    init(githubAPIClient: any GithubAPIClientProtocol) {
+    init(githubAPIClient: any GithubAPIClientProtocol = GithubAPIClient()) {
         self.githubAPIClient = githubAPIClient
     }
 
-    func fetchGitHubRepositories(for keyword: String) async throws -> GithubResponse {
-        let repositories = try await githubAPIClient.fetchGitHubRepositories(for: keyword)
-        return repositories
+    func fetchGitHubRepositories(for keyword: String) async throws -> [GithubItem] {
+        let response = try await githubAPIClient.fetchGitHubRepositories(for: keyword)
+        return response.items.map { $0.toDomain() }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  GithubResponseOwner.swift
+//  Github​Domain​Models​.swift
 //  GithubApp
 //
 //  Created by 0v0 on 2026/02/16.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct GithubItem : Identifiable,Sendable {
-    let id :UUID
+struct GithubItem: Identifiable, Sendable, Hashable {
+    let id: UUID
     let name: String
     let fullName: String
     let description: String?
@@ -36,21 +36,10 @@ struct GithubItem : Identifiable,Sendable {
         self.htmlURL = htmlURL
         self.owner = owner
     }
-
 }
 
-struct GithubOwner : Sendable {
+struct GithubOwner: Hashable, Sendable {
     let login: String
-    let avatarURL: String
-    let htmlURL: String
-
-    nonisolated init(
-        login: String,
-        avatarURL: String,
-        htmlURL: String
-    ) {
-        self.login = login
-        self.avatarURL = avatarURL
-        self.htmlURL = htmlURL
-    }
+    let avatarURL: URL?
+    let htmlURL: URL?
 }
