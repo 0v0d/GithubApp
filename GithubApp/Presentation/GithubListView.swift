@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GithubListView: View {
     @State private var viewModel = GithubListViewModel()
+    @State private var searchText: String = ""
+    @State private var isSearchPresented: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -20,14 +22,22 @@ struct GithubListView: View {
                 } else if let githubList = viewModel.githubList {
                     GithubItemListView(list: githubList)
                 } else {
-                    EmptyView()
+                    Text("リポジトリを検索してみましょう!")
                 }
             }
-            .task {
-                if viewModel.githubList == nil {
-                    await viewModel.fetchGithubList(for: "kotlin")
+            .navigationTitle("リポジトリ一覧")
+            .searchable(
+                text: $searchText,
+                isPresented: $isSearchPresented,
+                placement: .toolbar,
+                prompt: "リポジトリを検索..."
+            )
+            .onSubmit(of: .search) {
+                isSearchPresented = false
+                Task {
+                    await viewModel.fetchGithubList(for: searchText)
                 }
-            }.navigationTitle("リポジトリ一覧")
+            }
         }
     }
 }
@@ -87,4 +97,8 @@ struct RepositoryItemView: View {
             }
         }
     }
+}
+
+#Preview {
+    GithubListView()
 }

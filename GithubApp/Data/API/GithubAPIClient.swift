@@ -28,6 +28,7 @@ final class GithubAPIClient: GithubAPIClientProtocol, Sendable {
         let response: URLResponse
         do {
             (data, response) = try await URLSession.shared.data(from: url)
+
         } catch {
             throw APIError.networkError(error)
         }

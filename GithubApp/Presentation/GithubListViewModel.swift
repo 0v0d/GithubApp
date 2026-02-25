@@ -18,12 +18,21 @@ final class GithubListViewModel {
     @ObservationIgnored
     private let githubRepository: GithubRepositoryProtocol
 
+    @ObservationIgnored
+    private var lastSearchedKeyword: String?
+
     init(githubRepository: GithubRepositoryProtocol = GithubRepository()) {
         self.githubRepository = githubRepository
     }
 
     func fetchGithubList(for keyword: String) async {
+        clearError()
         guard !keyword.isEmpty else {
+            return
+        }
+
+        // 同じキーワードで既に取得済みなら再検索しない
+        guard keyword != lastSearchedKeyword else {
             return
         }
 
@@ -34,6 +43,7 @@ final class GithubListViewModel {
 
         do {
             githubList = try await githubRepository.fetchGitHubRepositories(for: keyword)
+            lastSearchedKeyword = keyword
         } catch {
             errorMessage = error.localizedDescription
         }
