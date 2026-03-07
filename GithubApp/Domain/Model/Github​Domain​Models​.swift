@@ -17,7 +17,7 @@ struct GithubItem: Identifiable, Sendable, Hashable {
     let htmlURL: String
     let owner: GithubOwner
 
-    nonisolated init(
+    init(
         id: UUID = UUID(),
         name: String,
         fullName: String,

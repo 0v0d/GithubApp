@@ -8,7 +8,7 @@
 import Foundation
 
 extension GithubResponseItem {
-    nonisolated func toDomain() -> GithubItem {
+    func toDomain() -> GithubItem {
         GithubItem(
             name: name,
             fullName: fullName,
@@ -22,7 +22,7 @@ extension GithubResponseItem {
 }
 
 extension GithubResponseOwner {
-    nonisolated func toDomain() -> GithubOwner {
+    func toDomain() -> GithubOwner {
         GithubOwner(
             login: login,
             avatarURL: URL(string: avatarURL),

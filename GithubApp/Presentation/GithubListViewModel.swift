@@ -37,7 +37,6 @@ final class GithubListViewModel {
         }
 
         isLoading = true
-        errorMessage = nil
 
         defer { isLoading = false }
 

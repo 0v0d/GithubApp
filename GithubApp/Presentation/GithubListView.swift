@@ -26,6 +26,7 @@ struct GithubListView: View {
                 }
             }
             .navigationTitle("リポジトリ一覧")
+            .navigationBarTitleDisplayMode(.inline)
             .searchable(
                 text: $searchText,
                 isPresented: $isSearchPresented,
